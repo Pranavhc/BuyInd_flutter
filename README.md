@@ -1,16 +1,11 @@
-# buyind
+# BuyInd: 
+My First Flutter project. Not serious one. Just for learning sake. Nothing more than that. 
+I intend to learn Flutter Basics, UI making, Firebase integreation, Authentication, etc.
+I'll try to keep on adding thing to the app as i learn different things. 
 
-A new Flutter project.
+# What i have leart:
+Well nothing much to share about that. (sun 12/12/21)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Promise to myself:
+I'll never delete this repository.
+Will come hear to see my mistakes when I'll be a much more improved app dev.
