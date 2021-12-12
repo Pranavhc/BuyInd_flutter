@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "742176317489",
+    "project_id": "buyind-be424",
+    "storage_bucket": "buyind-be424.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742176317489:android:ff335509b6eab125b3f510",
+        "android_client_info": {
+          "package_name": "com.example.buyind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742176317489-aolnpsg7hctimljh2th7t7d0uknuisdk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.buyind",
+            "certificate_hash": "9459878524a1c0b3798a6c0b313d2f69fcb99dfd"
+          }
+        },
+        {
+          "client_id": "742176317489-ffm4use5uv41oi26vjh9tpg2drue830u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVL2zk-UvX2HEN4XbBlHS_6xFuOZ0qPSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742176317489-ffm4use5uv41oi26vjh9tpg2drue830u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
