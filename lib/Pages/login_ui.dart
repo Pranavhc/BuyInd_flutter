@@ -14,9 +14,21 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.black,
-        child: SingleChildScrollView(
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.centerRight,
+        colors: [
+          Color(0xffb026ff),
+          Color(0xff29fff4),
+          Colors.purple.shade700,
+        ],
+        stops: [0, 0, 2],
+      )),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
           child: Form(
             child: Column(
               children: [
@@ -29,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 200,
                 ),
                 SizedBox(
-                  height: 20.0,
+                  height: 40.0,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
@@ -40,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
+                        color: Colors.deepPurple[900],
                       ),
                     ),
                   ),
@@ -49,30 +61,50 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20.0,
                 ),
                 Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () {
-                      final provider = Provider.of<GoogleSignInProvider>(
-                          context,
-                          listen: false);
-                      provider.googleLogin();
-                    },
-                    icon: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        'assets/images/googleSignIn.svg',
-                        width: 30,
-                        height: 30,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      gradient: LinearGradient(
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                        colors: [
+                          const Color(0xff29fff4),
+                          const Color(0xffb026ff)
+                        ],
                       ),
                     ),
-                    label: Text('Sign In with Google'),
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent,
+                        onSurface: Colors.transparent,
+                        shadowColor: Colors.transparent,
+                      ),
+                      onPressed: () {
+                        final provider = Provider.of<GoogleSignInProvider>(
+                            context,
+                            listen: false);
+                        provider.googleLogin();
+                      },
+                      icon: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(
+                          'assets/images/googleSignIn.svg',
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                      label: Text('Sign In with Google'),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 260.0,
-                ),
+                // SizedBox(
+                //   height: 365.0,
+                // ),
               ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

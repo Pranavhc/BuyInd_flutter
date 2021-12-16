@@ -1,5 +1,11 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buyind/Pages/cart_page.dart';
+import 'package:buyind/Utils/routes.dart';
 import 'package:buyind/models/catalog.dart';
+import 'package:buyind/widgets/Home_Widgets/catalog_list.dart';
+import 'package:buyind/widgets/Home_Widgets/home_header.dart';
+import 'package:buyind/widgets/themes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
@@ -34,7 +40,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: MyTheme.creameColor,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, Routes.cartPageRoute),
+        elevation: 0,
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        child: Icon(CupertinoIcons.cart),
+        backgroundColor: Colors.black,
+      ).p12(),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
@@ -43,7 +56,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               CatalogHeader(),
               if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                CatalogList().expand()
+                CatalogList().py16().expand()
               else
                 CircularProgressIndicator().centered().expand(),
             ],
@@ -51,92 +64,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-}
-
-class CatalogHeader extends StatelessWidget {
-  const CatalogHeader({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "BuyInd"
-            .text
-            .xl3
-            .bold
-            .color(Colors.deepPurpleAccent)
-            .make()
-            .pOnly(right: 8),
-        "Trending Products".text.xl3.gray500.make(),
-      ],
-    );
-  }
-}
-
-class CatalogList extends StatelessWidget {
-  const CatalogList({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: CatalogModel.items.length,
-      itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
-        return CatalogItem(catalog: catalog);
-      },
-    );
-  }
-}
-
-class CatalogItem extends StatelessWidget {
-  final Item catalog;
-
-  const CatalogItem({Key? key, required this.catalog})
-      : assert(catalog != null),
-        super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return VxBox(
-            child: Row(
-      children: [
-        Image.network(
-          catalog.image,
-        ).box.roundedLg.square(100).p12.color(Colors.white).make().p12(),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              catalog.name.text.bold.lg.color(Colors.white).make(),
-              catalog.desc.text.color(Colors.white).make(),
-              // 10.heightBox,
-              ButtonBar(
-                alignment: MainAxisAlignment.start,
-                buttonPadding: EdgeInsets.only(right: 24),
-                children: [
-                  "\$${catalog.price}".text.xl.bold.color(Colors.white).make(),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: "Buy".text.bold.make(),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.deepPurple),
-                      shape: MaterialStateProperty.all(StadiumBorder()),
-                    ),
-                  )
-                ],
-              ).pOnly(right: 8)
-            ],
-          ),
-        )
-      ],
-    ))
-        .black
-        .roundedLg
-        .square(140)
-        .make()
-        .pOnly(bottom: 10, top: 10, right: 0, left: 0);
   }
 }

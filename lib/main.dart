@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buyind/Pages/cart_page.dart';
 import 'package:buyind/Utils/is_logged_in.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'Pages/home_page.dart';
 import 'Pages/login_ui.dart';
 import 'Utils/google_SI_provider.dart';
 import 'Utils/routes.dart';
+// ignore: unnecessary_import
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 initFireBase() async {
@@ -41,7 +43,10 @@ class BuyInd extends StatelessWidget {
       create: (context) => GoogleSignInProvider(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false, // debug banner visibility
-        themeMode: ThemeMode.dark,
+        themeMode: ThemeMode.light,
+        theme: ThemeData(
+            primarySwatch: Colors.deepPurple,
+            primaryColorLight: Colors.deepPurple),
         darkTheme: ThemeData(
           primarySwatch: Colors.deepPurple,
           brightness: Brightness.dark,
@@ -51,6 +56,7 @@ class BuyInd extends StatelessWidget {
           Routes.isLoggedInRoute: (context) => IsLoggedIn(),
           Routes.loginUiRoute: (context) => LoginPage(),
           Routes.homeRoute: (context) => HomePage(),
+          Routes.cartPageRoute: (context) => CartPage(),
         },
       ),
     );
