@@ -1,24 +1,36 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
-class MyTheme {
+//   //colors
+//   static Color creameColor = Color(0xfff5f5f5);
+//   static Color darkcreameColor = Colors.grey.shade900;
+//   static Color darkBluishColor = Color(0xff403b58);
+//   static Color lighBluishColor = Color(0xff403b58);
+//   static Color darkPurple = Colors.purple.shade400;
+
+class MyThem {
+  static Color creameColor = Color(0xfff2f2f2);
+
   static ThemeData get lightTheme => ThemeData(
-        primarySwatch: Colors.deepPurple,
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          elevation: 0.5,
-          iconTheme: IconThemeData(color: Colors.black),
-          titleTextStyle: TextStyle(
-              color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w500),
+        primaryColorBrightness: Brightness.light,
+        cardColor: Colors.white,
+        canvasColor: creameColor,
+        colorScheme: ColorScheme.light(
+          background: creameColor,
+          brightness: Brightness.light,
+          primary: Colors.white,
+          secondary: Colors.black,
         ),
       );
 
   static ThemeData get darkTheme => ThemeData(
-        brightness: Brightness.dark,
+        primaryColorBrightness: Brightness.dark,
+        cardColor: Colors.grey.shade900,
+        canvasColor: Colors.black,
+        colorScheme: ColorScheme.dark(
+            background: creameColor,
+            brightness: Brightness.dark,
+            primary: Colors.black,
+            secondary: Colors.white),
       );
-
-  //colors
-  static Color creameColor = Color(0xfff5f5f5);
-  static Color darkBluishColor = Color(0xff403b58);
-  static Color darkPurple = Color(0xFF2d0b4a);
 }

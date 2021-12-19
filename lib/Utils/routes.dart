@@ -3,4 +3,5 @@ class Routes {
   static final loginUiRoute = "/loginUI";
   static final homeRoute = "/home";
   static final cartPageRoute = "/cart";
+  static final homeDrawerRoute = "homeDrawer";
 }

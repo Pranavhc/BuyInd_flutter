@@ -10,35 +10,49 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).cardColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(catalog.name),
         titleTextStyle: TextStyle(
-            color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
+            color: Theme.of(context).colorScheme.secondary,
+            fontSize: 24,
+            fontWeight: FontWeight.bold),
         elevation: 1,
-        backgroundColor: MyTheme.creameColor,
+        backgroundColor: Theme.of(context).canvasColor,
         shadowColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme:
+            IconThemeData(color: Theme.of(context).colorScheme.secondary),
       ),
       bottomNavigationBar: ButtonBar(
         alignment: MainAxisAlignment.spaceBetween,
         buttonPadding: EdgeInsets.only(right: 24),
         children: [
-          "\$${catalog.price}".text.xl2.bold.color(Colors.black).make(),
+          "\$${catalog.price}"
+              .text
+              .xl2
+              .bold
+              .color(Theme.of(context).colorScheme.secondary)
+              .make()
+              .p2(),
           ElevatedButton(
             onPressed: () {},
-            child: "Add to cart".text.xl.bold.make(),
+            child: "Add to cart"
+                .text
+                .lg
+                .bold
+                .color(Theme.of(context).colorScheme.secondary)
+                .make()
+                .p2(),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor:
+                  MaterialStateProperty.all(Theme.of(context).canvasColor),
               shape: MaterialStateProperty.all(StadiumBorder()),
             ),
           ).wh(120, 40)
         ],
-      )
-          .backgroundColor(MyTheme.creameColor)
-          .pOnly(left: 5, right: 5, top: 1, bottom: 1)
-          .backgroundColor(MyTheme.creameColor),
+      ).backgroundColor(Theme.of(context).cardColor),
+      // .pOnly(left: 5, right: 5, top: 1, bottom: 1),
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -55,16 +69,16 @@ class DetailsPage extends StatelessWidget {
                 child: Container(
                   width: context.screenWidth,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        colors: [MyTheme.creameColor, MyTheme.creameColor]),
+                    color: Theme.of(context).canvasColor,
                   ),
                   child: Column(
                     children: [
-                      catalog.desc.text.xl2.bold.color(Colors.black).make(),
+                      catalog.desc.text.xl2.bold
+                          .color(Theme.of(context).colorScheme.secondary)
+                          .make(),
                       "To through condemned below so to deadly dote. Ye strange earthly than not bacchanals light might come. Shades he land and his revel drop long mote. Before deemed fly in worse one love save childe. Childe himnot alone but eremites. It he mirthful his all almost could."
                           .text
-                          .color(Colors.grey.shade800)
+                          .color(Theme.of(context).colorScheme.secondary)
                           .lg
                           .center
                           .caption(context)
