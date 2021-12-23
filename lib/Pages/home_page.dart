@@ -51,24 +51,21 @@ class _HomePageState extends State<HomePage> {
       child: Icon(CupertinoIcons.cart),
       backgroundColor: Theme.of(context).canvasColor,
       foregroundColor: Theme.of(context).colorScheme.secondary,
-    ).p12();
+    ).p2();
   }
 
   homeBodySafeArea() {
     return SafeArea(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CatalogHeader(),
-            if (CatalogModel.items.isNotEmpty)
-              CatalogList().py16().expand()
-            else
-              CircularProgressIndicator().centered().expand(),
-          ],
-        ),
-      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CatalogHeader(),
+          if (CatalogModel.items.isNotEmpty)
+            CatalogList().py16().expand()
+          else
+            CircularProgressIndicator().centered().expand(),
+        ],
+      ).pOnly(right: 16, top: 16, left: 16, bottom: 0),
     );
   }
 }

@@ -1,12 +1,14 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
-//   //colors
-//   static Color creameColor = Color(0xfff5f5f5);
-//   static Color darkcreameColor = Colors.grey.shade900;
-//   static Color darkBluishColor = Color(0xff403b58);
-//   static Color lighBluishColor = Color(0xff403b58);
-//   static Color darkPurple = Colors.purple.shade400;
+class ThemeProvider extends ChangeNotifier {
+  ThemeMode themeMode = ThemeMode.dark;
+  bool get isDarkMode => themeMode == ThemeMode.dark;
+
+  void toggleTheme(bool isOn) {
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
+}
 
 class MyThem {
   static Color creameColor = Color(0xfff2f2f2);

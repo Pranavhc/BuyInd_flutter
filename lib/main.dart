@@ -1,9 +1,11 @@
+import 'package:buyind/core/store.dart';
 import 'package:buyind/widgets/Home_Widgets/drawer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:buyind/Utils/is_logged_in.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'Pages/login_ui.dart';
 import 'Pages/home_page.dart';
 import 'Utils/routes.dart';
@@ -30,30 +32,36 @@ initFireBase() async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initFireBase();
-  runApp(const BuyInd());
+  runApp(VxState(
+    store: MyStore(),
+    child: const BuyInd(),
+  ));
 }
 
 class BuyInd extends StatelessWidget {
   const BuyInd({Key? key}) : super(key: key);
-
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => GoogleSignInProvider(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false, // debug banner visibility
-        themeMode: ThemeMode.system,
-        theme: MyThem.lightTheme,
-        darkTheme: MyThem.darkTheme,
-        routes: {
-          '/': (context) => IsLoggedIn(),
-          Routes.isLoggedInRoute: (context) => IsLoggedIn(),
-          Routes.loginUiRoute: (context) => LoginPage(),
-          Routes.homeRoute: (context) => HomePage(),
-          Routes.cartPageRoute: (context) => CartPage(),
-          Routes.homeDrawerRoute: (context) => HomeDrawer(),
-        },
-      ),
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => GoogleSignInProvider(),
+        child: ChangeNotifierProvider(
+          create: (BuildContext context) => ThemeProvider(),
+          builder: (context, _) {
+            final themeProvider = Provider.of<ThemeProvider>(context);
+            return MaterialApp(
+              debugShowCheckedModeBanner: false, // debug banner visibility
+              themeMode: themeProvider.themeMode,
+              theme: MyThem.lightTheme,
+              darkTheme: MyThem.darkTheme,
+              routes: {
+                '/': (context) => IsLoggedIn(),
+                Routes.isLoggedInRoute: (context) => IsLoggedIn(),
+                Routes.loginUiRoute: (context) => LoginPage(),
+                Routes.homeRoute: (context) => HomePage(),
+                Routes.cartPageRoute: (context) => CartPage(),
+                Routes.homeDrawerRoute: (context) => HomeDrawer(),
+              },
+            );
+          },
+        ),
+      );
 }

@@ -1,5 +1,5 @@
 import 'package:buyind/models/catalog.dart';
-import 'package:buyind/widgets/themes.dart';
+import 'package:buyind/widgets/Home_Widgets/add_toCart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -35,21 +35,14 @@ class DetailsPage extends StatelessWidget {
               .color(Theme.of(context).colorScheme.secondary)
               .make()
               .p2(),
-          ElevatedButton(
-            onPressed: () {},
-            child: "Add to cart"
-                .text
-                .lg
-                .bold
-                .color(Theme.of(context).colorScheme.secondary)
-                .make()
-                .p2(),
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all(Theme.of(context).canvasColor),
-              shape: MaterialStateProperty.all(StadiumBorder()),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              gradient: LinearGradient(
+                  colors: [Colors.cyan, Colors.deepPurpleAccent]),
             ),
-          ).wh(120, 40)
+            child: AddToCart(catalog: catalog).wh(80, 40),
+          )
         ],
       ).backgroundColor(Theme.of(context).cardColor),
       // .pOnly(left: 5, right: 5, top: 1, bottom: 1),
@@ -63,7 +56,7 @@ class DetailsPage extends StatelessWidget {
             ).h32(context).p12().centered(),
             Expanded(
               child: VxArc(
-                height: 10.0,
+                height: 20.0,
                 arcType: VxArcType.CONVEY,
                 edge: VxEdge.TOP,
                 child: Container(
