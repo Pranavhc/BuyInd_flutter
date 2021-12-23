@@ -50,7 +50,7 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  image_path: "icon/icon.png"
+  image_path: "assets/images/appIcon.png"
   android: true
   ios: true
   # optionally, as transparency is not allowed on app store
